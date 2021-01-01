@@ -14,5 +14,7 @@ export default class Client extends AkairoClient {
         super({
             disableMentions: 'everyone',
         })
+        this.listenerHandler.loadAll()
+        this.commandHandler.loadAll()
     }
 }
