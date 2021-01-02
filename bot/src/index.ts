@@ -1,7 +1,12 @@
-import 'dotenv/config'
+import dotenv from 'dotenv'
 import { ShardingManager } from "discord.js";
 import Client from './client/Client';
 import { PrismaClient } from '@prisma/client';
+import path from 'path';
+
+dotenv.config({
+    path: path.resolve(path.join(__dirname, '..'))
+})
 
 declare global {
     namespace NodeJS {

@@ -10,10 +10,11 @@ export default class extends Inhibitor {
 
     async exec(msg: Message) {
         const { prisma } = global
-        const data = await prisma.user.findFirst({where: {
+        if (!await prisma.user.findFirst({where: {
             id: msg.author.id
-        }})
-        console.log(data)
+        }})) {
+            return true
+        }
         return false
     }
 }
