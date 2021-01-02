@@ -1,7 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "@prisma/client": "^2.13.1",
     "discord-akairo": "^8.1.0",
     "discord.js": "discordjs/discord.js",
     "dokdo": "wonderlandpark/dokdo",
