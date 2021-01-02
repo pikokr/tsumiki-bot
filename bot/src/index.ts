@@ -1,11 +1,22 @@
 import 'dotenv/config'
 import { ShardingManager } from "discord.js";
 import Client from './client/Client';
+import { PrismaClient } from '@prisma/client';
+
+declare global {
+    namespace NodeJS {
+        interface Global {
+            prisma: PrismaClient
+        }
+    }
+}
+
 
 process.on('unhandledRejection', console.error)
 process.on('uncaughtException', console.error)
 
 if (process.env.SHARDING_MANAGER) {
+    global.prisma = new PrismaClient()
     const client = new Client()
     client.login(process.env.BOT_TOKEN)
 } else {
