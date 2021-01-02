@@ -14,8 +14,10 @@ export default class extends Inhibitor {
         if (!await prisma.user.findFirst({where: {
             id: msg.author.id
         }})) {
+            const t = (localiztion: string) => this.client.i18n.ft('ko_KR', localiztion)
             const embed = new MessageEmbed()
-            embed.setTitle('')
+            embed.setTitle(t('test'))
+            const m = await msg.channel.send(embed)
             return true
         }
         return false

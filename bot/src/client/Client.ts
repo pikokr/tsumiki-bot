@@ -1,7 +1,7 @@
 import { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } from "discord-akairo";
 import path from "path";
 import Dokdo from 'dokdo'
-import i18n from 'discord-i18n'
+import * as i18n from 'discord-i18n'
 import prisma from "@prisma/client";
 import { Message } from "discord.js";
 
@@ -16,6 +16,7 @@ declare module 'discord.js' {
     interface Message {
         user: prisma.User
         fetchData: () => Promise<void>
+        t: (localization: string, replacers?: object) => string
     }
 }
 
@@ -26,6 +27,12 @@ Message.prototype.fetchData = async function() {
             id: this.author.id
         }
     })
+    if (!user) return
+    this.user = user
+}
+
+Message.prototype.t = function(localization: string, replacers?: object) {
+    return this.client.i18n.ft(this.user.locale, localization, replacers)
 }
 
 export default class Client extends AkairoClient {
@@ -46,7 +53,7 @@ export default class Client extends AkairoClient {
         this.i18n = new i18n.Client()
         this.i18n.configure({
             directory: path.join(__dirname, '../locales'),
-            locales: ['ko'],
+            locales: ['ko_KR'],
         })
         this.listenerHandler.loadAll()
         this.commandHandler.loadAll()
