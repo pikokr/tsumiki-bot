@@ -45,7 +45,8 @@ export default class Client extends AkairoClient {
         })
         this.commandHandler = new CommandHandler(this, {
             directory: path.resolve(path.join(__dirname, '../commands')),
-            prefix: process.env.COMMAND_PREFIX
+            prefix: process.env.COMMAND_PREFIX,
+            automateCategories: true
         })
         this.inhibitorHandler = new InhibitorHandler(this, {
             directory: path.resolve(path.join(__dirname, '../inhibitors')),
