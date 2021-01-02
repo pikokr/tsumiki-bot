@@ -1,4 +1,5 @@
 import { Inhibitor } from "discord-akairo";
+import { MessageEmbed } from "discord.js";
 import { Message } from "discord.js";
 
 export default class extends Inhibitor {
@@ -13,6 +14,8 @@ export default class extends Inhibitor {
         if (!await prisma.user.findFirst({where: {
             id: msg.author.id
         }})) {
+            const embed = new MessageEmbed()
+            embed.setTitle('')
             return true
         }
         return false

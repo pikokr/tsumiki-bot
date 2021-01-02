@@ -26,6 +26,7 @@ export default class extends Listener {
             owners: this.client.ownerID as string[],
         })
         this.client.on('message', msg => this.client.dokdo!.run(msg))
+        this.client.i18n.init(()=>null)
         console.log('Bot ready.')
     }
 }
