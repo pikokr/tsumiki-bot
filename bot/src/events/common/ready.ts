@@ -13,10 +13,11 @@ export default class extends Listener {
 
   async exec() {
     await i18next.use(Backend).init({
-      lng: 'ko',
       backend: {
-        loadPath: path.resolve(path.join(__dirname, '../../locales'))
-      }
+        loadPath: path.join(path.resolve(path.join(__dirname, '../../locales')), '{{lng}}/{{ns}}.json')
+      },
+      lng: 'ko',
+      ns: ['common']
     })
   }
 }

@@ -1,5 +1,6 @@
 import { Command } from 'discord-akairo'
 import { Message, MessageEmbed } from 'discord.js'
+import i18next from 'i18next'
 
 export default class extends Command {
   constructor() {

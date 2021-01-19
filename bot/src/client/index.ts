@@ -27,6 +27,6 @@ export default class TsumikiClient {
       owners,
       prefix: this.config.discord.defaultPrefix
     })
-    this.discord.on('message', dokdo.run.bind(dokdo))
+    this.discord.dokdo = dokdo
   }
 }
