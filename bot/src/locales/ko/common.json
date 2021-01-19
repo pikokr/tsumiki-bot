@@ -1,3 +1,5 @@
 {
-  "test": "hello"
+  "help": {
+    "title": "도움말"
+  }
 }
