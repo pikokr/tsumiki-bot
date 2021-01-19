@@ -1,5 +1,8 @@
 import { ShardingManager } from 'discord.js'
 import TsumikiClient from './client'
+import Logger from './util/Logger'
+
+Logger.patch()
 
 if (process.env.SHARDING_MANAGER) {
   const client = new TsumikiClient()
