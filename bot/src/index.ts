@@ -7,7 +7,7 @@ Logger.patch()
 if (process.env.SHARDING_MANAGER) {
   const client = new TsumikiClient()
 
-  client.start().then(async () => console.log(`Shard ${client.discord.shard!.ids.reduce((acc,cur) => acc+cur)} ready!`))
+  client.start().then(async () => console.log(`Shard #${client.discord.shard!.ids.reduce((acc,cur) => acc+cur)} ready!`))
 } else {
   const conf = require('../../config.json')
 
