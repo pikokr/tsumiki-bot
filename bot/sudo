@@ -1,0 +1,1 @@
+deb https://artifacts.crowdin.com/repo/deb/ / /etc/apt/sources.list.d/crowdin.list
